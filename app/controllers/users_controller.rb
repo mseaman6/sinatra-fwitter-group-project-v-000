@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/tweets'
     else
-      redirect '/' #if wanted add flash message saying signup failed, please try again
+      redirect '/signup' #if wanted add flash message saying signup failed, please try again
     end
   end
 
