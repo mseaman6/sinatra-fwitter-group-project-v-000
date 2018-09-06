@@ -9,13 +9,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    user = User.new(params[:user])
+    user = User.new(:username => params[:username], :password => params[:password], :email => params[:email])
     if user.save
       #log user in
       session[:user_id] = user.id
       redirect '/tweets'
     else
-      redirect '/signup' #if wanted add flash message saying signup failed, please try again
+      redirect '/signup'
+      #if wanted add flash message saying signup failed, please try again
     end
   end
 
@@ -28,13 +29,14 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(:username => params[:user][:username])
+    user = User.find_by(:username => params[:username])
 
-    if user && user.authenticate(params[:user][:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect '/tweets'
     else
-      redirect '/' #if wanted add flash message saying signup failed, please try again
+      redirect '/'
+      #if wanted add flash message saying signup failed, please try again
     end
   end
 
