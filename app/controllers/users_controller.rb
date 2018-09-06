@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'users/create_user'
+    if logged_in?
+      redirect 'tweets'
+    else
+      erb :'users/create_user'
+    end
   end
 
   post '/signup' do
@@ -16,7 +20,11 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :'users/login'
+    if logged_in?
+      redirect '/tweets'
+    else
+      erb :'users/login'
+    end
   end
 
   post '/login' do
@@ -35,14 +43,5 @@ class UsersController < ApplicationController
     redirect '/login'
   end
 
-  helpers do
-    def logged_in?
-      !!session[:user_id]
-    end
-
-    def current_user
-      User.find(session[:user_id])
-    end
-  end
 
 end
