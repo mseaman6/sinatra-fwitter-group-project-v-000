@@ -43,8 +43,8 @@ class UsersController < ApplicationController
 ##{current_user.slug}
   get "/users/:slug_id" do
     binding.pry
-    User.find_by_slug(params[:slug_id])
-    @tweets = current_user.tweets
+    user = User.find_by_slug(params[:slug_id])
+    @tweets = user.tweets
     erb :'users/show'
   end
 
