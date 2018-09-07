@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  #could also be handled as separate handlers class
+  #could also be handled as separate handlers class (see sinatra-logging-in-and-out)
   helpers do
     def logged_in?
       !!current_user
