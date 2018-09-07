@@ -40,7 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-##{current_user.slug}
   get "/users/:slug_id" do
     user = User.find_by_slug(params[:slug_id])
     @tweets = user.tweets
