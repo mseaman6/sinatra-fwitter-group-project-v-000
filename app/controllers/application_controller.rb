@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      #!!current_user    -will not work, because 
+      #!!current_user    -will not work, because
       !!session[:user_id]
     end
 
