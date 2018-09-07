@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
+      binding.pry
       !!current_user
       #!!session[:user_id]
     end
