@@ -40,14 +40,12 @@ class UsersController < ApplicationController
     end
   end
 
-  get "/users/#{current_user.slug}" do
+##{current_user.slug}
+  get "/users/:slug_id" do
     binding.pry
-    if logged_in?
-      @tweets = current_user.tweets
-      erb :'users/show'
-    else
-      redirect '/login'
-    end
+    User.find_by_slug(params[:slug_id])
+    @tweets = current_user.tweets
+    erb :'users/show'
   end
 
   get '/logout' do
