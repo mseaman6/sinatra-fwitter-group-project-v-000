@@ -15,13 +15,13 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      !!current_user
-      #!!session[:user_id]
+      #!!current_user   doesn't work
+      !!session[:user_id]
     end
 
     def current_user
       binding.pry
-      User.find(session[:user_id])
+      user ||= User.find(session[:user_id])
     end
   end
 
