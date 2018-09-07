@@ -52,8 +52,11 @@ class TweetsController < ApplicationController
   post '/tweets/:id' do
     @tweet = Tweet.find(params[:id])
     @tweet.update(params[:tweet])
-    @tweet.save
-    redirect "/tweets/#{@tweet.id}"
+    if @tweet.save
+      redirect "/tweets/#{@tweet.id}"
+    else
+      redirect "/tweets/#{@tweet.id}/edit"
+    end
   end
 
   get '/:user_id/tweets' do
