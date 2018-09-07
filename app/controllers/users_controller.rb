@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/#{user.slug}" do
+    binding.pry
     if logged_in?
       @tweets = current_user.tweets
       erb :'users/show'
