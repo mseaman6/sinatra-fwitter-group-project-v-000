@@ -51,7 +51,6 @@ class TweetsController < ApplicationController
 
   post '/tweets/:id' do
     @tweet = Tweet.find(params[:id])
-    binding.pry
     @tweet.update(:content => params[:content])
     if @tweet.save
       redirect "/tweets/#{@tweet.id}"
