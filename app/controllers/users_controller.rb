@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users/:id' do
+  get "/users/#{user.slug}" do
     if logged_in?
       @tweets = current_user.tweets
       erb :'users/show'
