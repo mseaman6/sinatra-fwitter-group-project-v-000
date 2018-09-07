@@ -42,7 +42,6 @@ class UsersController < ApplicationController
 
 ##{current_user.slug}
   get "/users/:slug_id" do
-    binding.pry
     user = User.find_by_slug(params[:slug_id])
     @tweets = user.tweets
     erb :'users/show'
