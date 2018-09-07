@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get "/users/#{user.slug}" do
+  get "/users/#{current_user.slug}" do
     binding.pry
     if logged_in?
       @tweets = current_user.tweets
